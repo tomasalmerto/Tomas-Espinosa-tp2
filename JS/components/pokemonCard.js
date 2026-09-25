@@ -33,3 +33,15 @@ export function crearTarjetaPokemon(informacionPokemon) {
         </div>
     `;
 }
+
+
+export function crearSpinnerCarga() {
+    return `
+        <div class="d-flex flex-column align-items-center my-5 animate__animated animate__fadeIn">
+            <div class="spinner-border text-warning" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+            <p class="text-warning mt-3 fw-semibold">Buscando en la Pokédex...</p>
+        </div>
+    `;
+}

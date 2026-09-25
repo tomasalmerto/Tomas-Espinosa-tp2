@@ -1,6 +1,6 @@
 
 import { buscarPokemon } from './services/pokemonService.js';
-import { crearTarjetaPokemon } from './components/pokemonCard.js';
+import { crearTarjetaPokemon, crearSpinnerCarga } from './components/pokemonCard.js';
 import { validarTexto } from './helpers/validationHelper.js';
 import { mostrarAlertaVacia, mostrarAlertaError, mostrarAlertaExito } from './helpers/alertHelper.js';
 
@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    
+
 
     async function cargarPokemonIniciales() {
-        contenedorTarjeta.innerHTML = `<p class="text-warning fw-bold animate__animated animate__flash animate__infinite">Cargando Pokémon del día...</p>`;
+        contenedorTarjeta.innerHTML = crearSpinnerCarga();
         
         try {
             const idsAleatorios = [
@@ -65,12 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        contenedorTarjeta.className = "col-md-6 text-center mx-auto";
+        contenedorTarjeta.innerHTML = crearSpinnerCarga();
+
 
         try {
 
             const informacionPokemon = await buscarPokemon(valorBuscado);
-
-
             const tarjetaHTML = crearTarjetaPokemon(informacionPokemon);
 
             contenedorTarjeta.className = "col-md-6 text-center";
