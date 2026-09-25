@@ -11,6 +11,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const cajaTexto = document.getElementById('search-input');
     const contenedorTarjeta = document.getElementById('card-container');
 
+
+
+    
+
+    async function cargarPokemonIniciales() {
+        contenedorTarjeta.innerHTML = `<p class="text-warning fw-bold animate__animated animate__flash animate__infinite">Cargando Pokémon del día...</p>`;
+        
+        try {
+            const idsAleatorios = [
+                Math.floor(Math.random() * 1010) + 1,
+                Math.floor(Math.random() * 1010) + 1,
+                Math.floor(Math.random() * 1010) + 1
+            ];
+
+            const promesas = idsAleatorios.map(id => buscarPokemon(id));
+            const listaPokemon = await Promise.all(promesas);
+
+            contenedorTarjeta.innerHTML = '';
+
+            contenedorTarjeta.className = "row justify-content-center gap-3";
+
+            listaPokemon.forEach(pokemon => {
+                const tarjetaHTML = crearTarjetaPokemon(pokemon);
+                
+                const columna = document.createElement('div');
+                columna.className = "col-md-3 d-flex justify-content-center";
+                columna.innerHTML = tarjetaHTML;
+                
+                contenedorTarjeta.appendChild(columna);
+            });
+
+        } catch (error) {
+            contenedorTarjeta.innerHTML = `<p class="text-danger">No se pudieron cargar los Pokémon iniciales.</p>`;
+        }
+    }
+
+    cargarPokemonIniciales();
+
+
+
+
+
+
     formulario.addEventListener('submit', async (evento) => { 
 
         evento.preventDefault();
@@ -30,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const tarjetaHTML = crearTarjetaPokemon(informacionPokemon);
 
+            contenedorTarjeta.className = "col-md-6 text-center";
             contenedorTarjeta.innerHTML = tarjetaHTML;
 
             mostrarAlertaExito(informacionPokemon.name);
