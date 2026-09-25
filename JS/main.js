@@ -1,8 +1,8 @@
 
-import { buscarPokemon } from './services/pokemonService';
-import { crearTarjetaPokemon } from './components/pokemonCard';
-import { validarTexto } from './helpers/validationHelper';
-import { mostrarAlertaVacia, mostrarAlertaError, mostrarAlertaExito } from './helpers/alertHelper';
+import { buscarPokemon } from './services/pokemonService.js';
+import { crearTarjetaPokemon } from './components/pokemonCard.js';
+import { validarTexto } from './helpers/validationHelper.js';
+import { mostrarAlertaVacia, mostrarAlertaError, mostrarAlertaExito } from './helpers/alertHelper.js';
 
 
 document.addEventListener('DOMContentLoaded', () => {

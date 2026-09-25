@@ -12,7 +12,32 @@
     <link rel="stylesheet" href="./CSS/styles.css">
 
 </head>
-<body>
+<body class="bg-dark text-light">
+
+    <div class="container my-5">
+
+        <header class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-warning">Buscador de pokemon</h1>
+            <p class="text-muted">Trabajo Practico Web 2</p>
+        </header>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-6">
+
+                 <form id="search-form" class="d-flex gap-2">
+                    <input type="text" id="search-input" class="form-control form-control-lg bg-secondary text-white border-0" placeholder="Ingresa nombre o ID del Pokémon..." autocomplete="off">
+                    <button type="submit" class="btn btn-warning btn-lg fw-bold px-4">Buscar</button>
+                </form>
+            </div>
+        </div>
+
+        <section class="row justify-content-center" aria-label="Resultado de la búsqueda">
+            <div class="col-md-6 text-center" id="card-container">
+                <p class="text-muted italic">Aún no has buscado ningún Pokémon.</p>
+            </div>
+        </section>
+        
+    </div>
     
 
 

@@ -1,6 +1,5 @@
 
-const API = 'https://pokeapi.co';
-
+const API = ' https://pokeapi.co/api/v2/pokemon';
 
 export async function buscarPokemon(pokemonBuscado) {
 
@@ -8,13 +7,9 @@ export async function buscarPokemon(pokemonBuscado) {
 
     const res = await fetch(`${API}/${nombreBase}`);
 
-
-
-
     if (!res.ok) {
         throw new Error(`No pudimos encontrar al Pokémon: "${pokemonBuscado}"`);
     }
-
 
     return await res.json();
 }
