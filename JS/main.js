@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formulario = document.getElementById('search-form');
     const cajaTexto = document.getElementById('search-input');
     const contenedorTarjeta = document.getElementById('card-container');
+    const botonReset = document.getElementById('btn-reset');
 
 
 
@@ -86,4 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 mostrarAlertaError(error.message);
                 }
     });
+
+
+    botonReset.addEventListener('click', () => {
+        cajaTexto.value = '';
+
+        cargarPokemonIniciales();
+    });
+
+
 });
